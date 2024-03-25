@@ -14,8 +14,11 @@ const Box = ({ setClicked }) => {
     setPosition([x / aspect, 0, y / aspect])
   })
 
+  const handleHoverEnter = () => document.body.style.cursor = "grab"
+  const handleHoverLeave = () => document.body.style.cursor = "auto"
+
   return (
-    <mesh {...bind()} position={position} ref={ref}>
+    <mesh onPointerEnter={handleHoverEnter} onPointerLeave={handleHoverLeave} {...bind()} position={position} ref={ref}>
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial color={'#eb7a34'} />
     </mesh>
